@@ -1,0 +1,625 @@
+@import 'tailwindcss';
+@plugin './hero.ts';
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+/*Root*/
+:root {
+  /* Font-Sizes for Laptop */
+  --h1: 3.125rem; /*50px*/
+  --h2: 2.625rem; /*42px*/
+  --h3: 2rem; /*32px*/
+  --h4: 1.5rem; /*24px*/
+  --h5: 1.25rem; /*20px*/
+  --h6: 1rem; /*16px*/
+  --xl: 1.25rem; /*20px*/
+  --lg: 1rem; /*16px*/
+  --md: 0.875rem; /*14px*/
+  --sm: 0.75rem; /*12px*/
+
+  --visa-gradient: linear-gradient(122deg, #4ca1af -26.29%, #c4e0e5 100%);
+  --mastercard-gradient: linear-gradient(150deg, #600faf 0%, #0061ac 80%);
+  --bc-gradient: linear-gradient(122deg, #2c535b -26.29%, #45ba8c 118.11%);
+  --dinersclub-gradient: linear-gradient(270deg, #4b79a1 0%, #283e51 100%);
+  --jcb-gradient: linear-gradient(44deg, #1f1c18 3.84%, #8e0e00 93.32%);
+  --unionpay-gradient: linear-gradient(270deg, #2c3e50 0%, #3498db 100%);
+  --discover-gradient: linear-gradient(43deg, #7b4397 -2.81%, #dc2430 100%);
+  --americanexpress-gradient: linear-gradient(97deg, #30cfd0 4.1%, #330867 111.92%);
+}
+/* Font-Sizes for Mobile */
+@media screen and (max-width: 767px) {
+  :root {
+    --h1: 2.375rem; /*38px*/
+    --h2: 2rem; /*42px*/
+    --h3: 1.625rem; /*32px*/
+    --h4: 1.375rem; /*24px*/
+    --h5: 1.25rem; /*20px*/
+    --h6: 1rem; /*16px*/
+    --xl: 1.25rem; /*20px*/
+    --lg: 0.875rem; /*16px*/
+    --md: 0.875rem; /*14px*/
+    --sm: 0.75rem; /*12px*/
+  }
+}
+
+@theme {
+  /* colors */
+  --color-primary-dark: rgb(45 88 230); /* #2D58E6 */
+  --color-primary-light: rgb(0 60 255); /* #003CFF */
+  --color-secondary: rgb(0 0 255); /* #0000FF */
+  --color-red: rgb(201 49 26); /* #C9311A */
+  --color-green: rgb(9 139 13); /* #098B0D */
+  --color-light-green: rgb(69 186 140); /* #45BA8C */
+  --color-light-blue: rgb(227 240 255); /* #E3F0FF */
+  --color-black: rgb(49 45 45); /* #312D2D */
+  --color-gray: rgb(209 209 209); /* #D1D1D1 */
+  --color-light-gray: rgb(237 237 237); /* #EDEDED */
+  --color-dark-gray: rgb(150 150 150); /* #969696 */
+  --color-background-gray: rgb(250 250 251); /* #FAFAFB */
+
+  --gradient-primary: linear-gradient(119deg, #020024 -53.69%, #3363ff 107.62%);
+
+  /* Font-size */
+
+  --text-h1: var(--h1);
+  --text-h2: var(--h2);
+  --text-h3: var(--h3);
+  --text-h4: var(--h4);
+  --text-h5: var(--h5);
+  --text-h6: var(--h6);
+  --text-xl: var(--xl);
+  --text-lg: var(--lg);
+  --text-md: var(--md);
+  --text-sm: var(--sm);
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+body {
+  @apply !overflow-hidden;
+}
+
+.data-table-scrollable {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrollbar */
+}
+
+/* cehckbox card */
+.card-checkbox .checkmark {
+  height: 16px;
+  width: 16px;
+  display: inline-block !important;
+  min-height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 6px;
+  border: 1.5px solid white;
+  position: relative;
+}
+.card-checkbox .checkbox:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 8.75%;
+  left: 8%;
+  width: 11px;
+  height: 11px;
+  background-color: white; /* Inner circle color */
+  border-radius: 50%;
+}
+/*Gradient checkbox*/
+.gradient-checkbox .checkbox {
+  display: none;
+}
+.gradient-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 20px;
+}
+.gradient-checkbox .checkmark {
+  width: 16px;
+  height: 16px;
+  display: inline-block !important;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1.5px solid #969696;
+  position: relative;
+}
+.gradient-checkbox .checkbox:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 8.5%;
+  left: 9%;
+  width: 11px;
+  height: 11px;
+  background: #003cff;
+  border: 1.5px solid #003cff;
+  border-radius: 50%;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Add these styles to your global CSS file */
+
+/* TimePicker container */
+.react-time-picker {
+  width: 100%;
+  max-width: 200px;
+}
+
+/* Wrapper for the input elements */
+.react-time-picker__wrapper {
+  border-radius: 12px;
+  border: 1px solid #ededed !important;
+  padding: 12px 1rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+/* Disabled state styling */
+.react-time-picker--disabled .react-time-picker__wrapper {
+  background-color: #f1f5f9;
+  border-color: #ededed;
+  border-radius: 12px;
+}
+
+.react-time-picker--disabled {
+  background: none !important ;
+}
+
+/* Input group styling */
+.react-time-picker__inputGroup {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Button styling */
+.react-time-picker__button {
+  padding: 0;
+  margin: 0 0.25rem;
+}
+
+/* Icon styling */
+.react-time-picker__button svg {
+  stroke: #94a3b8;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* AM/PM styling */
+.react-time-picker__inputGroup__amPm {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+/* Input field styling */
+.react-time-picker__inputGroup__input {
+  color: #334155;
+  font-size: 0.875rem;
+  min-width: 0.8rem;
+  height: auto;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  outline: none;
+}
+
+.react-time-picker__clock {
+  display: none !important;
+}
+
+/* Hide the clear button */
+.react-time-picker__clear-button {
+  display: none !important;
+}
+
+/* Tiny MCE Editor */
+.tox-editor-header {
+  background-color: #2d58e6 !important;
+}
+.tox-editor-header > * {
+  background-color: #2d58e6 !important;
+  border-radius: 20px !important;
+}
+.tox .tox-toolbar-overlord .tox-toolbar:not(.tox-toolbar--scrolling):first-child,
+.tox .tox-toolbar-overlord .tox-toolbar__primary {
+  background-color: #2d58e6 !important;
+  border: none !important;
+}
+.tox .tox-tbtn {
+  background-color: #2d58e6 !important;
+}
+.tox .tox-tbtn svg {
+  fill: #ffff !important;
+}
+
+.tox-edit-area::before {
+  border: none !important;
+}
+.tox-tinymce {
+  max-height: 200px !important;
+}
+.tox .tox-statusbar {
+  display: none !important;
+}
+.tox .tox-tbtn--enabled {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.tox .tox-toolbar__group {
+  gap: 10px !important;
+}
+
+.bg-mastercard-gradient {
+  background: var(--mastercard-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-visa-gradient {
+  background: var(--visa-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-unionpay-gradient {
+  background: var(--unionpay-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-americanexpress-gradient {
+  background: var(--americanexpress-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-discover-gradient {
+  background: var(--discover-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-dinersclub-gradient {
+  background: var(--dinersclub-gradient);
+  background-size: 200% !important;
+}
+
+.bg-bc-gradient {
+  background: var(--bc-gradient);
+  background-size: 200% !important;
+  transition: background 1s ease !important;
+}
+
+.bg-jcb-gradient {
+  background: var(--jcb-gradient);
+  background-size: 200% !important;
+}
+
+/*Global checkbox*/
+.card-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.card-checkbox .checkbox {
+  display: none;
+}
+.card-checkbox .checkmark {
+  height: 16px;
+  width: 16px;
+  display: inline-block !important;
+  min-height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 6px;
+  border: 1.5px solid white;
+  position: relative;
+}
+.card-checkbox .checkbox:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 8.75%;
+  left: 8%;
+  width: 11px;
+  height: 11px;
+  background-color: white; /* Inner circle color */
+  border-radius: 50%;
+}
+/*Gradient checkbox*/
+.gradient-checkbox .checkbox {
+  display: none;
+}
+
+.gradient-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 20px;
+}
+
+.gradient-checkbox .checkmark {
+  width: 16px;
+  height: 16px;
+  display: inline-block !important;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1.5px solid rgb(var(--light-gray));
+  position: relative;
+}
+
+.gradient-checkbox .checkbox:checked + .checkmark {
+  border: 1.5px solid rgb(var(--primary-dark));
+}
+
+.gradient-checkbox .checkbox:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 8.5%;
+  left: 9%;
+  width: 11px;
+  height: 11px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+}
+
+/* Remove number input spinners for Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove number input spinner for Firefox */
+.no-spinner[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.no-spinner {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Date range Calender styles */
+.rmdp-header {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 !important;
+  margin-top: 0 !important;
+  align-items: baseline !important;
+}
+.rmdp-arrow {
+  border: solid var(--gray) !important;
+  border-width: 0px 2px 2px 0px !important;
+}
+.rmdp-header-values {
+  color: var(--gray) !important;
+  font-size: var(--md);
+}
+
+.rmdp-calendar {
+  width: 366px;
+}
+.rmdp-calendar > div {
+  width: 100%;
+}
+
+.rmdp-day-picker {
+  display: block !important;
+  width: 100%;
+}
+
+.rmdp-calendar > div {
+  width: 100%;
+}
+.only.rmdp-month-picker,
+.only.rmdp-year-picker {
+  width: 100% !important;
+}
+.rmdp-calendar {
+  box-shadow: none !important;
+}
+.rmdp-calendar > div {
+  box-shadow: none !important;
+}
+
+.rmdp-week-day {
+  color: #000 !important;
+}
+.rmdp-range {
+  background: #d6e2eb !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 34px !important;
+}
+.rmdp-week,
+.rmdp-ym {
+  justify-content: stretch !important;
+}
+.rmdp-day,
+.rmdp-week-day {
+  width: 70% !important;
+  height: 34px !important;
+}
+.rmdp-day.rmdp-today span {
+  width: 70% !important;
+  height: 100% !important;
+  background-color: #2d58e6 !important;
+}
+.rmdp-day span {
+  bottom: 0 I !important;
+  top: 0 !important;
+  height: 34px !important;
+  width: 70% !important;
+}
+.rmdp-range-hover.start.end:not(.force),
+.rmdp-range.start.end:not(.force) {
+  background: transparent !important;
+}
+.rmdp-range-hover.start.end:not(.force),
+.rmdp-range.start.end:not(.force) span {
+  background: #7ea6f0 !important;
+}
+.rmdp-range-hover.start.end:not(.force):hover,
+.rmdp-range.start.end:not(.force):hover span {
+  background: #7ea6f0 !important;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight) {
+  background-color: #2d58e6 !important;
+  width: 70% !important;
+}
+
+.rmdp-arrow-container {
+  height: 17px !important;
+  display: flex !important;
+}
+@media (hover: hover) {
+  .rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+    height: 100% !important;
+    background: #2d58e6 !important;
+    width: 70% !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .rmdp-calendar {
+    width: 250px;
+  }
+  .rmdp-day.rmdp-today span {
+    width: 100% !important;
+    z-index: 10;
+  }
+  .rmdp-day.rmdp-selected span:not(.highlight) {
+    width: 92% !important;
+  }
+  .rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+    height: 100% !important;
+    background: #2d58e6 !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 639px) and (min-width: 321px) {
+  .rmdp-calendar {
+    width: 250px;
+  }
+  .rmdp-day.rmdp-today span {
+    width: 100% !important;
+    z-index: 10;
+  }
+  .rmdp-day.rmdp-selected span:not(.highlight) {
+    width: 92% !important;
+  }
+  .rmdp-day:not(.rmdp-disabled, .rmdp-day-hidden) span:hover {
+    height: 100% !important;
+    background: #2d58e6 !important;
+    width: 92% !important;
+  }
+}
+
+/* scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2d58e6;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #2d58e6;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #2d58e6 #f1f1f1;
+}
+
+/* calender styles */
+
+.month-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 24px;
+}
+
+.dropdown-calendar {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.dropdown-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.dropdown-trigger {
+  width: 100%;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
